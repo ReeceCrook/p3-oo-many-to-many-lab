@@ -35,20 +35,14 @@ class Book:
 class Contract:
     all = []
     def __init__(self, author, book, date, royalties):
-        if not isinstance(author, Author):
+        if not isinstance(author, Author) or not isinstance(book, Book) or not isinstance(date, str) or not isinstance(royalties, int):
             raise Exception
-        elif not isinstance(book, Book):
-            raise Exception
-        elif not isinstance(date, str):
-            raise Exception
-        elif not isinstance(royalties, int):
-            raise Exception
-        else:
-            self.author = author
-            self.book = book
-            self.date = date
-            self.royalties = royalties
-            Contract.all.append(self)
+        
+        self.author = author
+        self.book = book
+        self.date = date
+        self.royalties = royalties
+        Contract.all.append(self)
 
     @classmethod
     def contracts_by_date(cls):
